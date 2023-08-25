@@ -14,6 +14,18 @@ builder.Services.AddDbContext<DataContext>(opt =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+var MyAllowedOrigins = "_myAllowedOrigins";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(MyAllowedOrigins,
+                          builder =>
+                          {
+                              builder.WithOrigins("http://localhost:4200")
+                                                  .AllowAnyHeader()
+                                                  .AllowAnyMethod();
+                          });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -26,6 +38,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors(MyAllowedOrigins);
 
 app.MapControllers();
 
