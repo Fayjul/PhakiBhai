@@ -1,6 +1,8 @@
 using System.Security.Cryptography;
 using System.Text;
+using API.DTOs;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
@@ -14,13 +16,19 @@ namespace API.Controllers
         }
         
         [HttpPost("register")]
-        public async Task<ActionResult<AppUser>> Register(string userName, string password)
+        public async Task<ActionResult<AppUser>> Register([FromBody]RegisterDto registerDto)
         {
+            var userName = registerDto.UserName;
+            var password = registerDto.Password;
+            if(await UserExits(userName))
+            {
+                return BadRequest("This user name is already exits");
+            }
             using var hmac = new HMACSHA512();
 
             var user = new AppUser 
             {
-                UserName = userName,
+                UserName = userName.ToLower(),
                 PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password)),
                 PasswordSalt = hmac.Key
 
@@ -31,5 +39,30 @@ namespace API.Controllers
 
             return user;
         }
-    }
+        
+        
+
+        [HttpPost("login")]
+        public async Task<ActionResult<AppUser>> Login([FromBody]LoginDto loginDto)
+        {
+            var user = await _context.Users.SingleOrDefaultAsync(x => x.UserName == loginDto.UserName);
+
+            if(user == null) return BadRequest("UserName is not Valid");
+
+            using var hmac = new HMACSHA512(user.PasswordSalt);
+            var computeHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDto.Password));
+            
+            for(int i = 0;  i < computeHash.Length; i++)
+            {
+                if(computeHash[i] != user.PasswordHash[i]) return BadRequest("Password is not Valid");
+            }
+            
+            return user;
+        }
+
+        private async Task<bool> UserExits(string userName) 
+        {
+            return  await _context.Users.AnyAsync(x => x.UserName == userName);
+        }
+    } 
 }

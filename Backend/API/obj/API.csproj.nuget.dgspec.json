@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "g:\\Important Project\\PhakiBhai\\Backend\\API\\API.csproj": {}
+    "G:\\Important Project\\PhakiBhai\\Backend\\API\\API.csproj": {}
   },
   "projects": {
-    "g:\\Important Project\\PhakiBhai\\Backend\\API\\API.csproj": {
+    "G:\\Important Project\\PhakiBhai\\Backend\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "g:\\Important Project\\PhakiBhai\\Backend\\API\\API.csproj",
+        "projectUniqueName": "G:\\Important Project\\PhakiBhai\\Backend\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "g:\\Important Project\\PhakiBhai\\Backend\\API\\API.csproj",
+        "projectPath": "G:\\Important Project\\PhakiBhai\\Backend\\API\\API.csproj",
         "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "g:\\Important Project\\PhakiBhai\\Backend\\API\\obj\\",
+        "outputPath": "G:\\Important Project\\PhakiBhai\\Backend\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
