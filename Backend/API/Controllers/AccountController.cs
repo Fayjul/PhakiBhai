@@ -1,6 +1,7 @@
 using System.Security.Cryptography;
 using System.Text;
 using API.DTOs;
+using API.interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,13 +11,15 @@ namespace API.Controllers
     {
 
         private readonly DataContext _context;
-        public AccountController(DataContext context)
+        private readonly ITokenService _tokenService;
+        public AccountController(DataContext context, ITokenService tokenService)
         {
             _context = context;
+            _tokenService = tokenService;
         }
         
         [HttpPost("register")]
-        public async Task<ActionResult<AppUser>> Register([FromBody]RegisterDto registerDto)
+        public async Task<ActionResult<UserDto>> Register([FromBody]RegisterDto registerDto)
         {
             var userName = registerDto.UserName;
             var password = registerDto.Password;
@@ -37,13 +40,16 @@ namespace API.Controllers
             _context.Add(user);
             await _context.SaveChangesAsync();
 
-            return user;
+            return new UserDto{
+                UserName = userName,
+                Token = _tokenService.CreateToken(user)
+            };
         }
         
         
 
         [HttpPost("login")]
-        public async Task<ActionResult<AppUser>> Login([FromBody]LoginDto loginDto)
+        public async Task<ActionResult<UserDto>> Login([FromBody]LoginDto loginDto)
         {
             var user = await _context.Users.SingleOrDefaultAsync(x => x.UserName == loginDto.UserName);
 
@@ -57,7 +63,10 @@ namespace API.Controllers
                 if(computeHash[i] != user.PasswordHash[i]) return BadRequest("Password is not Valid");
             }
             
-            return user;
+            return new UserDto{
+                UserName = user.UserName,
+                Token = _tokenService.CreateToken(user)
+            };
         }
 
         private async Task<bool> UserExits(string userName) 
