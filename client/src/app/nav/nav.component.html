@@ -1,23 +1,37 @@
 <header class="p-3 text-bg-dark">
   <div class="container">
-    <div
-      class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
-    >
+    <div class="d-flex flex-wrap align-items-center justify-content-between">
       <h3>Pakhi Bhai</h3>
 
+      <!-- Navigation Links -->
       <ul
         class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
+        *ngIf="loggedIn"
       >
         <li><a href="#" class="nav-link px-2 text-white">Matches</a></li>
         <li><a href="#" class="nav-link px-2 text-white">Lists</a></li>
         <li><a href="#" class="nav-link px-2 text-white">Message</a></li>
+        <li>
+          <a href="" class="nav-link px-2 text-white" (click)="logOut()"
+            >Logout</a
+          >
+        </li>
       </ul>
 
+      <div class="dropdown" *ngIf="loggedIn">
+        <a class="dropdown-toggle text-light">Wellcome User</a>
+        <div class="dropdown-menu">
+          <a href="" class="dropdown-item">Edit Profile</a>
+          <a href="" class="dropdown-item" (click)="logOut()">Logout</a>
+        </div>
+      </div>
+      <!-- Login Form -->
       <form
         #loginForm="ngForm"
-        class="d-flex"
+        class="d-flex justify-content-start"
         (ngSubmit)="login()"
         autocomplete="off"
+        *ngIf="!loggedIn"
       >
         <input
           name="username"
