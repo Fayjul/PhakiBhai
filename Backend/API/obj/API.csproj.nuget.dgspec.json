@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "G:\\Important Project\\PhakiBhai\\Backend\\API\\API.csproj": {}
+    "g:\\Important Project\\PhakiBhai\\Backend\\API\\API.csproj": {}
   },
   "projects": {
-    "G:\\Important Project\\PhakiBhai\\Backend\\API\\API.csproj": {
+    "g:\\Important Project\\PhakiBhai\\Backend\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\Important Project\\PhakiBhai\\Backend\\API\\API.csproj",
+        "projectUniqueName": "g:\\Important Project\\PhakiBhai\\Backend\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "G:\\Important Project\\PhakiBhai\\Backend\\API\\API.csproj",
+        "projectPath": "g:\\Important Project\\PhakiBhai\\Backend\\API\\API.csproj",
         "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "G:\\Important Project\\PhakiBhai\\Backend\\API\\obj\\",
+        "outputPath": "g:\\Important Project\\PhakiBhai\\Backend\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",

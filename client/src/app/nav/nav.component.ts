@@ -15,6 +15,16 @@ export class NavComponent {
    */
   constructor(private accountService: AccountService) {}
 
+  ngOnInit(): void {
+    this.getCurrentUser();
+  }
+
+  getCurrentUser() {
+    this.accountService.currentUser$.subscribe({
+      next: (user) => (this.loggedIn = !!user),
+      error: (error) => console.log(error),
+    });
+  }
   login() {
     console.log(this.model);
 
@@ -27,6 +37,7 @@ export class NavComponent {
     });
   }
   logOut() {
+    this.accountService.logout();
     this.loggedIn = false;
   }
 }
