@@ -6,14 +6,18 @@
       <!-- Navigation Links -->
       <ul
         class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
-        *ngIf="loggedIn"
+        *ngIf="accountService.currentUser$ | async"
       >
         <li><a href="#" class="nav-link px-2 text-white">Matches</a></li>
         <li><a href="#" class="nav-link px-2 text-white">Lists</a></li>
         <li><a href="#" class="nav-link px-2 text-white">Message</a></li>
       </ul>
 
-      <div class="dropdown" *ngIf="loggedIn" dropdown>
+      <div
+        class="dropdown"
+        *ngIf="accountService.currentUser$ | async"
+        dropdown
+      >
         <a class="dropdown-toggle text-light" dropdownToggle>Wellcome User</a>
         <div class="dropdown-menu" *dropdownMenu>
           <a href="" class="dropdown-item">Edit Profile</a>
@@ -26,7 +30,7 @@
         class="d-flex justify-content-start"
         (ngSubmit)="login()"
         autocomplete="off"
-        *ngIf="!loggedIn"
+        *ngIf="!(accountService.currentUser$ | async)"
       >
         <input
           name="username"
