@@ -11,14 +11,14 @@ export class RegisterComponent {
   @Output() cancelRegister: EventEmitter<any> = new EventEmitter();
   model: any = {};
 
-  constructor(private accountService: AccountService) {}
+  constructor(private accountService: AccountService) { }
   register() {
     // console.log(this.model);
     this.accountService.register(this.model).subscribe({
       next: () => {
         this.cancel();
       },
-      error: (error) => console.log(error),
+      error: (error: any) => console.log(error),
     });
   }
 
