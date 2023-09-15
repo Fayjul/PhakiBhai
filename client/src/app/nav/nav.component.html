@@ -1,16 +1,37 @@
 <header class="p-3 text-bg-dark">
   <div class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-between">
-      <h3>Pakhi Bhai</h3>
+      <h3 routerLink="/" routerLinkActive="active">Pakhi Bhai</h3>
 
       <!-- Navigation Links -->
       <ul
         class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
         *ngIf="accountService.currentUser$ | async"
       >
-        <li><a href="#" class="nav-link px-2 text-white">Matches</a></li>
-        <li><a href="#" class="nav-link px-2 text-white">Lists</a></li>
-        <li><a href="#" class="nav-link px-2 text-white">Message</a></li>
+        <li>
+          <a
+            routerLink="/members"
+            routerLinkActive="active"
+            class="nav-link px-2 text-white"
+            >Matches</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/lists"
+            routerLinkActive="active"
+            class="nav-link px-2 text-white"
+            >Lists</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/messages"
+            routerLinkActive="active"
+            class="nav-link px-2 text-white"
+            >Message</a
+          >
+        </li>
       </ul>
 
       <div
