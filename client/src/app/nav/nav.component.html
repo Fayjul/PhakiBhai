@@ -4,14 +4,6 @@
       <h3 routerLink="/" routerLinkActive="active">Pakhi Bhai</h3>
 
       <!-- Navigation Links -->
-      <li>
-        <a
-          routerLink="/errors"
-          routerLinkActive="active"
-          class="nav-link px-2 text-white"
-          >Errors</a
-        >
-      </li>
       <ul
         class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
         *ngIf="accountService.currentUser$ | async"
