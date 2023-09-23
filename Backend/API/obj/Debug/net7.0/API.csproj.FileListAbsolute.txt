@@ -76,3 +76,5 @@ G:\Important Project\PhakiBhai\Backend\API\obj\Debug\net7.0\refint\API.dll
 G:\Important Project\PhakiBhai\Backend\API\obj\Debug\net7.0\API.pdb
 G:\Important Project\PhakiBhai\Backend\API\obj\Debug\net7.0\API.genruntimeconfig.cache
 G:\Important Project\PhakiBhai\Backend\API\obj\Debug\net7.0\ref\API.dll
+G:\Important Project\PhakiBhai\Backend\API\bin\Debug\net7.0\AutoMapper.dll
+G:\Important Project\PhakiBhai\Backend\API\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
