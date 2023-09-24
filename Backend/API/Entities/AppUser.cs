@@ -1,6 +1,5 @@
 using System.ComponentModel.DataAnnotations;
 using API.Entities;
-using API.Extensions;
 
 namespace API;
 
@@ -27,7 +26,7 @@ public class AppUser{
     public string Country{get; set;}
     public List<Photo> Photos {get; set;} = new();
 
-    public int GetAge() => DateOfBirth.CalcuateAge();
+    // public int GetAge() => DateOfBirth.CalcuateAge();
     
 }
 
