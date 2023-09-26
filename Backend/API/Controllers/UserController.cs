@@ -24,7 +24,7 @@ public class UserController : BaseApiController
 
     [HttpGet("{id:int}")]
     public async Task<ActionResult<AppUser>> GetUser(int id) => await _userRepository.GetUserByIdAsync(id);
-    [AllowAnonymous]
+    
     [HttpGet("{userName}")]
     public async Task<ActionResult<MemberDto>> GetUserByUserName(string userName) 
     {
