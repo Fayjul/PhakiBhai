@@ -1,5 +1,4 @@
-import { User } from './../_models/user';
-import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Member } from '../_models/member';
@@ -18,5 +17,8 @@ export class MembersService {
 
   getMember(usereName: string) {
     return this.http.get<Member>(this.baseUrl + 'user/' + usereName);
+  }
+  updateMember(member: Member) {
+    return this.http.put(this.baseUrl + 'user/', member);
   }
 }
