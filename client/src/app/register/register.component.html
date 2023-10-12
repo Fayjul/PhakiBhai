@@ -4,27 +4,71 @@
   <div class="mb-3">
     <input
       type="text"
+      [class.is-invalid]="
+        registerForm.get('userName')?.errors &&
+        registerForm.get('userName')?.touched
+      "
       class="form-control"
       formControlName="userName"
       placeholder="User Name"
     />
+    <div class="invalid-feedback">Please enter a User Name</div>
   </div>
 
   <div class="mb-3">
     <input
       type="password"
+      [class.is-invalid]="
+        registerForm.get('password')?.errors &&
+        registerForm.get('password')?.touched
+      "
       class="form-control"
       formControlName="password"
       placeholder="Password"
     />
+    <div
+      class="invalid-feedback"
+      *ngIf="registerForm.get('password')?.hasError('required')"
+    >
+      Please Enter a valid Password
+    </div>
+    <div
+      class="invalid-feedback"
+      *ngIf="registerForm.get('password')?.hasError('minlength')"
+    >
+      Password should be more than 4 charecters
+    </div>
+    <div
+      class="invalid-feedback"
+      *ngIf="registerForm.get('password')?.hasError('maxlength')"
+    >
+      Password should be less than 32 charecters
+    </div>
   </div>
   <div class="mb-3">
     <input
       type="password"
+      [class.is-invalid]="
+        registerForm.get('confirmPassword')?.errors &&
+        registerForm.get('confirmPassword')?.touched
+      "
       class="form-control"
       formControlName="confirmPassword"
       placeholder="Confirm Password"
     />
+
+    <div
+      class="invalid-feedback"
+      *ngIf="registerForm.get('confirmPassword')?.hasError('required')"
+    >
+      Please Enter a valid confirmation Password
+    </div>
+    <div
+      class="invalid-feedback"
+      *ngIf="registerForm.get('confirmPassword')?.hasError('notMatching')"
+    >
+      Password should be same.
+    </div>
   </div>
   <div class="form-group text-center">
     <button class="btn btn-success me-2" type="submit">Register</button>
