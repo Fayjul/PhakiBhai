@@ -19,6 +19,7 @@ export class RegisterComponent {
   @Input() usersFromHomeComponent: any;
   @Output() cancelRegister: EventEmitter<any> = new EventEmitter();
   model: any = {};
+  maxDate: Date = new Date();
   registerForm: FormGroup = new FormGroup({});
 
   constructor(
@@ -29,6 +30,7 @@ export class RegisterComponent {
 
   ngOnInit(): void {
     this.initializeForm();
+    this.maxDate.setFullYear(this.maxDate.getFullYear() - 18);
   }
 
   initializeForm() {

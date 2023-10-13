@@ -30,8 +30,11 @@
     [formControl]="$any(registerForm.controls['knownAs'])"
     [label]="'Known as'"
   ></app-text-input>
-  <!-- <app-date-picker [formControl]="$any(registerForm.controls['dateOfBirth'])"
-        [label]="'Date of birth'" [maxDate]="maxDate"></app-date-picker> -->
+  <app-date-piker
+    [formControl]="$any(registerForm.controls['dateOfBirth'])"
+    [label]="'Date of birth'"
+    [maxDate]="maxDate"
+  ></app-date-piker>
   <app-text-input
     [formControl]="$any(registerForm.controls['city'])"
     [label]="'City'"
