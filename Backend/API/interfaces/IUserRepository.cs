@@ -1,3 +1,5 @@
+using API.Helpers;
+
 namespace API.interfaces
 {
     public interface IUserRepository
@@ -9,7 +11,7 @@ namespace API.interfaces
 
         Task<AppUser> GetUserByIdAsync(int id);
         Task<AppUser> GetUserByUserNameAsync(string userName);
-        Task<IEnumerable<MemberDto>> GetMembersAsync();
+        Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams);
         Task<MemberDto> GetMemberAsync(string UserName);
     }
 }

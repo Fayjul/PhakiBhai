@@ -6,6 +6,9 @@ G:\Important Project\PhakiBhai\Backend\API\bin\Debug\net7.0\API.deps.json
 G:\Important Project\PhakiBhai\Backend\API\bin\Debug\net7.0\API.runtimeconfig.json
 G:\Important Project\PhakiBhai\Backend\API\bin\Debug\net7.0\API.dll
 G:\Important Project\PhakiBhai\Backend\API\bin\Debug\net7.0\API.pdb
+G:\Important Project\PhakiBhai\Backend\API\bin\Debug\net7.0\AutoMapper.dll
+G:\Important Project\PhakiBhai\Backend\API\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+G:\Important Project\PhakiBhai\Backend\API\bin\Debug\net7.0\CloudinaryDotNet.dll
 G:\Important Project\PhakiBhai\Backend\API\bin\Debug\net7.0\Humanizer.dll
 G:\Important Project\PhakiBhai\Backend\API\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 G:\Important Project\PhakiBhai\Backend\API\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
@@ -24,6 +27,7 @@ G:\Important Project\PhakiBhai\Backend\API\bin\Debug\net7.0\Microsoft.IdentityMo
 G:\Important Project\PhakiBhai\Backend\API\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
 G:\Important Project\PhakiBhai\Backend\API\bin\Debug\net7.0\Microsoft.OpenApi.dll
 G:\Important Project\PhakiBhai\Backend\API\bin\Debug\net7.0\Mono.TextTemplating.dll
+G:\Important Project\PhakiBhai\Backend\API\bin\Debug\net7.0\Newtonsoft.Json.dll
 G:\Important Project\PhakiBhai\Backend\API\bin\Debug\net7.0\SQLitePCLRaw.batteries_v2.dll
 G:\Important Project\PhakiBhai\Backend\API\bin\Debug\net7.0\SQLitePCLRaw.core.dll
 G:\Important Project\PhakiBhai\Backend\API\bin\Debug\net7.0\SQLitePCLRaw.provider.e_sqlite3.dll
@@ -76,7 +80,3 @@ G:\Important Project\PhakiBhai\Backend\API\obj\Debug\net7.0\refint\API.dll
 G:\Important Project\PhakiBhai\Backend\API\obj\Debug\net7.0\API.pdb
 G:\Important Project\PhakiBhai\Backend\API\obj\Debug\net7.0\API.genruntimeconfig.cache
 G:\Important Project\PhakiBhai\Backend\API\obj\Debug\net7.0\ref\API.dll
-G:\Important Project\PhakiBhai\Backend\API\bin\Debug\net7.0\AutoMapper.dll
-G:\Important Project\PhakiBhai\Backend\API\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
-G:\Important Project\PhakiBhai\Backend\API\bin\Debug\net7.0\CloudinaryDotNet.dll
-G:\Important Project\PhakiBhai\Backend\API\bin\Debug\net7.0\Newtonsoft.Json.dll

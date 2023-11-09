@@ -15,6 +15,7 @@ namespace API.Helpers
             TotalPages = (int)Math.Ceiling((double)count / (double)pageSize);
             PageSize = pageSize;
             TotalCount = count;
+            AddRange(items);
         }
         public static async Task<PagedList<T>> CreateAsync(IQueryable<T>source, int pageNumber, int pageSize)
         {
@@ -22,6 +23,7 @@ namespace API.Helpers
             var items = await source.Skip((pageNumber-1)*pageSize).Take(pageSize).ToListAsync();
             return new PagedList<T>(items,count,pageNumber,pageSize);
         }
+
         
     }
 }
