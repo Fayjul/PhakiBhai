@@ -2,6 +2,7 @@
 using API.DTOs;
 using API.Entities;
 using API.Extensions;
+using API.Helpers;
 using API.interfaces;
 using API.Interfaces;
 using AutoMapper;
@@ -16,26 +17,31 @@ public class UserController : BaseApiController
     private readonly IUserRepository _userRepository;
     private readonly IMapper _mapper;
     private readonly IPhotoService _photoService;
-    
+
     public UserController(IUserRepository userRepository, IMapper mapper, IPhotoService photoService)
     {
-        _userRepository = userRepository; 
+        _userRepository = userRepository;
         _mapper = mapper;
         _photoService = photoService;
     }
 
-    
+
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers() => 
-        Ok(await _userRepository.GetMembersAsync()); 
-    
-   
+    public async Task<ActionResult<PagedList<MemberDto>>> GetUsers([FromQuery] UserParams userParams)
+    {
+        var users = await _userRepository.GetMembersAsync(userParams);
+
+        Response.AddPaginationHeader(new PaginationHeader(users.CurrentPage, users.PageSize,
+            users.TotalCount, users.TotalPages));
+
+        return Ok(users);
+    }
 
     [HttpGet("{id:int}")]
     public async Task<ActionResult<AppUser>> GetUser(int id) => await _userRepository.GetUserByIdAsync(id);
-    
+
     [HttpGet("{userName}")]
-    public async Task<ActionResult<MemberDto>> GetUserByUserName(string userName) 
+    public async Task<ActionResult<MemberDto>> GetUserByUserName(string userName)
     {
         return await _userRepository.GetMemberAsync(userName);
     }
@@ -44,11 +50,11 @@ public class UserController : BaseApiController
     public async Task<ActionResult> UpdateUser(MemberUpdateDto memberUpdateDto)
     {
         var user = await _userRepository.GetUserByUserNameAsync(User.GetUsername());
-        
-        if(user == null) return NotFound();
+
+        if (user == null) return NotFound();
 
         _mapper.Map(memberUpdateDto, user);
-        if(await _userRepository.SaveAllAsync()) return NoContent();
+        if (await _userRepository.SaveAllAsync()) return NoContent();
 
         return BadRequest("Failed to update user");
     }
@@ -58,28 +64,29 @@ public class UserController : BaseApiController
     {
         var user = await _userRepository.GetUserByUserNameAsync(User.GetUsername());
 
-        if(user == null) return NotFound();
+        if (user == null) return NotFound();
 
         var result = await _photoService.AddPhotoAsync(file);
 
-        if(result.Error != null) return BadRequest(result.Error.Message);
+        if (result.Error != null) return BadRequest(result.Error.Message);
 
-        var photo = new Photo{
+        var photo = new Photo
+        {
             Url = result.SecureUrl.AbsoluteUri,
             PublicId = result.PublicId
         };
 
-        if(user.Photos.Count == 0) photo.IsMain = true;
+        if (user.Photos.Count == 0) photo.IsMain = true;
 
         user.Photos.Add(photo);
 
         if (await _userRepository.SaveAllAsync())
         {
-            return CreatedAtAction(nameof(GetUserByUserName), 
-                new {userName = user.UserName},  _mapper.Map<PhotoDto>(photo)
+            return CreatedAtAction(nameof(GetUserByUserName),
+                new { userName = user.UserName }, _mapper.Map<PhotoDto>(photo)
             );
         }
-           
+
 
         return BadRequest("Problem adding photo");
     }
